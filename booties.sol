@@ -1,5 +1,5 @@
 /**
- *Submitted for verification at BscScan.com on 2021-06-01
+ *Submitted for verification at BscScan.com on 2021-05-31
 */
 
 // SPDX-License-Identifier: Unlicensed
@@ -9,16 +9,28 @@
     This is the official token for:
     
        https://www.coinbooties.com/
-       
+    
+    Main Telegram group 
+    
+        https://t.me/coinbooties
+        
+    
     * TOKENOMICS *
     
-    10% of the initial supply will be burned
+    Renounce ownership
+    Unsold tokens after presale will be burned
+    
+    There is 10% total tax...
+    
     4% is redistributed to holders
     4% is added to the liquidity
-    2% is sent to the dev wallet
+    2% is sent to the following wallet
     
-    2% of every transaction will go to this wallet. Depnding on market cap and the growth of the token, we will periodically burn some of the tokens that are sent to this wallet.
-    Other tokens will be sold to support ongoing development.
+    We have created a fresh wallet the address is: 0xcd86856B47BB8aAc2d0fcfe384Ad49caDC0Fdf83
+    
+    2% of every transaction will go to this wallet. Depnding on market cap and the growth of the token,
+    we will periodically burn some of the tokens that are sent to this wallet.
+    Other tokens will be sold to support ongoing development without affecting the market.
     
  */
 
@@ -124,6 +136,9 @@ library SafeMath {
         }
     }
 }
+
+
+
 
 abstract contract Context {
     function _msgSender() internal view virtual returns (address) {
@@ -429,7 +444,7 @@ interface IUniswapV2Router02 is IUniswapV2Router01 {
     ) external;
 }
 
-contract BootiesToken is Context, IERC20, Ownable {
+contract CoinBooties is Context, IERC20, Ownable {
     using SafeMath for uint256;
     using Address for address;
 
@@ -441,11 +456,11 @@ contract BootiesToken is Context, IERC20, Ownable {
     address[] private _excluded;
     address private _devWalletAddress = 0xcd86856B47BB8aAc2d0fcfe384Ad49caDC0Fdf83;
     uint256 private constant MAX = ~uint256(0);
-    uint256 private _tTotal = 1000000000 * 10**6 * 10**9;
+    uint256 private _tTotal = 10000000000 * 10**6 * 10**9;
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
     string private _name = "coinbooties.com";
-    string private _symbol = "TestBOOTIES";
+    string private _symbol = "BOOTIES";
     uint8 private _decimals = 9;
     uint256 public _taxFee = 4;
     uint256 private _previousTaxFee = _taxFee;
@@ -457,8 +472,8 @@ contract BootiesToken is Context, IERC20, Ownable {
     address public immutable uniswapV2Pair;
     bool inSwapAndLiquify;
     bool public swapAndLiquifyEnabled = true;
-    uint256 public _maxTxAmount = 20000000 * 10**6 * 10**9;
-    uint256 private numTokensSellToAddToLiquidity = 5000000 * 10**6 * 10**9;
+    uint256 public _maxTxAmount = 5000000 * 10**6 * 10**9;
+    uint256 private numTokensSellToAddToLiquidity = 500000 * 10**6 * 10**9;
     event MinTokensBeforeSwapUpdated(uint256 minTokensBeforeSwap);
     event SwapAndLiquifyEnabledUpdated(bool enabled);
     event SwapAndLiquify(
@@ -476,7 +491,7 @@ contract BootiesToken is Context, IERC20, Ownable {
     constructor () {
         _rOwned[owner()] = _rTotal;
         
-        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0xD99D1c33F9fC3444f8101754aBC46c52416550D1);
+        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
         uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
             .createPair(address(this), _uniswapV2Router.WETH());
         uniswapV2Router = _uniswapV2Router;
@@ -872,5 +887,5 @@ contract BootiesToken is Context, IERC20, Ownable {
         _reflectFee(rFee, tFee);
         emit Transfer(sender, recipient, tTransferAmount);
     }
-
+    
 }
