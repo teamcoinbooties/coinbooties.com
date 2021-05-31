@@ -26,7 +26,7 @@
     4% is added to the liquidity
     2% is sent to the following wallet
     
-    We have created a fresh wallet the address is: 0xcd86856B47BB8aAc2d0fcfe384Ad49caDC0Fdf83
+    We have created a fresh wallet the address is: 0x40E27c577BfA0C2046B5335f8CEa961cC55C56c6
     
     2% of every transaction will go to this wallet. Depnding on market cap and the growth of the token,
     we will periodically burn some of the tokens that are sent to this wallet.
@@ -454,7 +454,7 @@ contract CoinBooties is Context, IERC20, Ownable {
     mapping (address => bool) private _isExcludedFromFee;
     mapping (address => bool) private _isExcluded;
     address[] private _excluded;
-    address private _devWalletAddress = 0xcd86856B47BB8aAc2d0fcfe384Ad49caDC0Fdf83;
+    address private _devWalletAddress = 0x40E27c577BfA0C2046B5335f8CEa961cC55C56c6;
     uint256 private constant MAX = ~uint256(0);
     uint256 private _tTotal = 10000000000 * 10**6 * 10**9;
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
