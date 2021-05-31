@@ -456,7 +456,7 @@ contract CoinBooties is Context, IERC20, Ownable {
     address[] private _excluded;
     address private _devWalletAddress = 0x40E27c577BfA0C2046B5335f8CEa961cC55C56c6;
     uint256 private constant MAX = ~uint256(0);
-    uint256 private _tTotal = 10000000000 * 10**6 * 10**9;
+    uint256 private _tTotal = 10**10 * 10**6 * 10**9;
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
     string private _name = "coinbooties.com";
