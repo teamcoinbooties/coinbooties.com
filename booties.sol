@@ -472,8 +472,8 @@ contract CoinBooties is Context, IERC20, Ownable {
     address public immutable uniswapV2Pair;
     bool inSwapAndLiquify;
     bool public swapAndLiquifyEnabled = true;
-    uint256 public _maxTxAmount = 2000000000000 * 10**1 * 10**9;
-    uint256 private numTokensSellToAddToLiquidity = 300000000000 * 10**1 * 10**9;
+    uint256 public _maxTxAmount = 20*10**12*10**9;
+    uint256 private numTokensSellToAddToLiquidity = 30*10**11*10**9;
     event MinTokensBeforeSwapUpdated(uint256 minTokensBeforeSwap);
     event SwapAndLiquifyEnabledUpdated(bool enabled);
     event SwapAndLiquify(
